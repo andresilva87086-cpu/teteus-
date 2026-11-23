@@ -47,6 +47,12 @@
         .nao {
             background-color: #d93636;
         }
+
+        #mensagem {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -61,16 +67,32 @@
         <h2>🍽️ Merenda de Hoje</h2>
 
         <p>Confira nossa merenda do dia!</p>
-<img 
-    src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600"
-    alt="Foto de uma refeição"
-    style="width:100%; max-width:350px; border-radius:15px;"
->
+
+        <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600"
+            alt="Foto de uma refeição"
+            style="width:100%; max-width:350px; border-radius:15px;"
+        >
+
         <h3>Você vai merendar hoje?</h3>
 
-        <button class="sim">SIM</button>
-        <button class="nao">NÃO</button>
+        <button class="sim" onclick="responder('SIM')">
+            SIM
+        </button>
+
+        <button class="nao" onclick="responder('NÃO')">
+            NÃO
+        </button>
+
+        <p id="mensagem"></p>
     </div>
+
+    <script>
+        function responder(escolha) {
+            document.getElementById("mensagem").innerText =
+                "Sua resposta foi registrada: " + escolha + "!";
+        }
+    </script>
 
 </body>
 </html>
