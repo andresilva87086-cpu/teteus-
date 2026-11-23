@@ -145,6 +145,20 @@ function atualizarMerenda() {
     }
 
     alert("Merenda atualizada: " + nome);
+}function abrirPainel() {
+    document.getElementById("login").style.display = "block";
+}
+
+function verificarSenha() {
+    let senha = document.getElementById("senha").value;
+
+    if (senha === "Merenda2026") {
+        document.getElementById("painel").style.display = "block";
+        document.getElementById("login").style.display = "none";
+    } else {
+        document.getElementById("erro").innerText =
+            "Senha incorreta!";
+    }
 }
 </body>
 </html>
