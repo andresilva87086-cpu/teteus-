@@ -118,6 +118,20 @@
                 "Sua resposta foi registrada: " + escolha + "!";
         }
     </script>
+function abrirPainel() {
+    document.getElementById("painel").style.display = "block";
+}
 
+function atualizarMerenda() {
+    let nome = document.getElementById("nomeMerenda").value;
+    let foto = document.getElementById("fotoMerenda").value;
+
+    if (nome === "") {
+        alert("Digite o nome da merenda!");
+        return;
+    }
+
+    alert("Merenda atualizada: " + nome);
+}
 </body>
 </html>
