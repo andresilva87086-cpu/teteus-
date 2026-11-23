@@ -117,7 +117,43 @@
     <hr>
 
     <h3>👩‍🍳 Área das Merendeiras</h3>
+<hr>
 
+<h3>🔐 Área do Administrador</h3>
+
+<button class="acesso" onclick="abrirAdmin()">
+    Entrar como administrador
+</button>
+
+<div id="loginAdmin" class="card" style="display:none;">
+
+    <h3>🔑 Acesso do Administrador</h3>
+
+    <input
+        type="password"
+        id="senhaAdmin"
+        placeholder="Digite o código do administrador"
+    >
+
+    <br><br>
+
+    <button class="acesso" onclick="verificarAdmin()">
+        ENTRAR
+    </button>
+
+    <p id="erroAdmin"></p>
+
+</div>
+
+<div id="painelAdmin" class="card" style="display:none;">
+    <h2>👑 Painel do Administrador</h2>
+    <p>Bem-vindo ao painel de administração!</p>
+    <p>Aqui você poderá gerenciar o sistema.</p>
+
+    <button class="nao" onclick="fecharAdmin()">
+        Sair
+    </button>
+</div>
     <button class="acesso" onclick="abrirPainel()">
         Entrar no painel
     </button>
