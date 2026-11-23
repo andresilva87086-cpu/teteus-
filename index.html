@@ -86,7 +86,32 @@
 
         <p id="mensagem"></p>
     </div>
+<hr>
 
+<h3>👩‍🍳 Área das Merendeiras</h3>
+
+<button onclick="abrirPainel()">
+    Entrar no painel
+</button>
+
+<div id="painel" style="display:none;">
+    <h3>Painel das Merendeiras</h3>
+
+    <label>Nome da merenda:</label>
+    <input type="text" id="nomeMerenda">
+
+    <br><br>
+
+    <label>Foto da merenda:</label>
+    <input type="text" id="fotoMerenda"
+    placeholder="Cole o link da foto">
+
+    <br><br>
+
+    <button onclick="atualizarMerenda()">
+        Atualizar merenda
+    </button>
+</div>
     <script>
         function responder(escolha) {
             document.getElementById("mensagem").innerText =
