@@ -217,7 +217,28 @@
         </button>
 
     </div>
+function abrirAdmin() {
+    document.getElementById("loginAdmin").style.display = "block";
+    document.getElementById("painelAdmin").style.display = "none";
+}
 
+function verificarAdmin() {
+    let senha = document.getElementById("senhaAdmin").value;
+
+    if (senha === "felype") {
+        document.getElementById("loginAdmin").style.display = "none";
+        document.getElementById("painelAdmin").style.display = "block";
+        document.getElementById("senhaAdmin").value = "";
+    } else {
+        document.getElementById("erroAdmin").innerText =
+            "Código incorreto!";
+    }
+}
+
+function fecharAdmin() {
+    document.getElementById("painelAdmin").style.display = "none";
+    document.getElementById("loginAdmin").style.display = "none";
+}
     <script>
 
         function responder(escolha) {
