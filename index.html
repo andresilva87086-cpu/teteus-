@@ -233,14 +233,32 @@ function verificarAdmin() {
         document.getElementById("erroAdmin").innerText =
             "Código incorreto!";
     }
+
+
+    <script>
+function abrirAdmin() {
+    document.getElementById("loginAdmin").style.display = "block";
+    document.getElementById("painelAdmin").style.display = "none";
+}
+
+function verificarAdmin() {
+    let senha = document.getElementById("senhaAdmin").value;
+
+    if (senha === "felype") {
+        document.getElementById("loginAdmin").style.display = "none";
+        document.getElementById("painelAdmin").style.display = "block";
+        document.getElementById("senhaAdmin").value = "";
+        document.getElementById("erroAdmin").innerText = "";
+    } else {
+        document.getElementById("erroAdmin").innerText =
+            "Código incorreto!";
+    }
 }
 
 function fecharAdmin() {
     document.getElementById("painelAdmin").style.display = "none";
     document.getElementById("loginAdmin").style.display = "none";
 }
-    <script>
-
         function responder(escolha) {
             document.getElementById("mensagem").innerText =
                 "Sua resposta foi registrada: " + escolha + "!";
