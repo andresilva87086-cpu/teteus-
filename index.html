@@ -40,6 +40,10 @@
             margin: 10px;
         }
 
+        button:hover {
+            opacity: 0.85;
+        }
+
         .sim {
             background-color: #238b45;
         }
@@ -48,10 +52,29 @@
             background-color: #d93636;
         }
 
-        #mensagem {
+        .acesso {
+            background-color: #2366a8;
+        }
+
+        #mensagem, #erro {
             font-size: 18px;
             font-weight: bold;
             margin-top: 20px;
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        #imagemMerenda {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
         }
     </style>
 </head>
@@ -64,18 +87,18 @@
     </header>
 
     <div class="card">
+
         <h2>🍽️ Merenda de Hoje</h2>
 
-<p id="descricaoMerenda">
-    Confira nossa merenda do dia!
-</p>
+        <p id="descricaoMerenda">
+            Confira nossa merenda do dia!
+        </p>
 
-        img
-    id="imagemMerenda"
-    src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600"
-    alt="Foto da merenda"
-    style="width:100%; max-width:350px; border-radius:15px;"
->
+        <img
+            id="imagemMerenda"
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600"
+            alt="Foto da merenda"
+        >
 
         <h3>Você vai merendar hoje?</h3>
 
@@ -88,89 +111,134 @@
         </button>
 
         <p id="mensagem"></p>
+
     </div>
-<hr>
 
-<h3>👩‍🍳 Área das Merendeiras</h3>
+    <hr>
 
-<button onclick="abrirPainel()">
-    Entrar no painel
-</button>
+    <h3>👩‍🍳 Área das Merendeiras</h3>
 
-<div id="login">
-    <h3>🔐 Acesso das Merendeiras</h3>
-
-    <input type="password" id="senha"
-    placeholder="Digite a senha">
-
-    <button onclick="verificarSenha()">
-        Entrar
+    <button class="acesso" onclick="abrirPainel()">
+        Entrar no painel
     </button>
 
-    <p id="erro"></p>
-</div>
+    <div id="login" class="card" style="display:none;">
 
-<div id="painel" style="display:none;">
-    <h3>Painel das Merendeiras</h3>
+        <h3>🔐 Acesso das Merendeiras</h3>
 
-    <label>Nome da merenda:</label>
-    <input type="text" id="nomeMerenda">
+        <input
+            type="password"
+            id="senha"
+            placeholder="Digite a senha"
+        >
 
-    <br><br>
+        <br><br>
 
-    <label>Foto da merenda:</label>
-    <input type="text" id="fotoMerenda"
-    placeholder="Cole o link da foto">
+        <button class="acesso" onclick="verificarSenha()">
+            ENTRAR
+        </button>
 
-    <br><br>
+        <p id="erro"></p>
 
-    <button onclick="atualizarMerenda()">
-        Atualizar merenda
-    </button>
-</div>
+    </div>
+
+    <div id="painel" class="card" style="display:none;">
+
+        <h3>👩‍🍳 Painel das Merendeiras</h3>
+
+        <label>Nome da merenda:</label>
+
+        <br><br>
+
+        <input
+            type="text"
+            id="nomeMerenda"
+            placeholder="Digite a merenda"
+        >
+
+        <br><br>
+
+        <label>Foto da merenda:</label>
+
+        <br><br>
+
+        <input
+            type="url"
+            id="fotoMerenda"
+            placeholder="Cole o link da foto"
+        >
+
+        <br><br>
+
+        <button class="sim" onclick="atualizarMerenda()">
+            Atualizar merenda
+        </button>
+
+        <br>
+
+        <button class="nao" onclick="fecharPainel()">
+            Sair do painel
+        </button>
+
+    </div>
+
     <script>
+
         function responder(escolha) {
             document.getElementById("mensagem").innerText =
                 "Sua resposta foi registrada: " + escolha + "!";
         }
+
+        function abrirPainel() {
+            document.getElementById("login").style.display = "block";
+            document.getElementById("painel").style.display = "none";
+            document.getElementById("erro").innerText = "";
+        }
+
+        function verificarSenha() {
+
+            let senha = document.getElementById("senha").value;
+
+            if (senha === "Merenda2026") {
+
+                document.getElementById("painel").style.display = "block";
+                document.getElementById("login").style.display = "none";
+                document.getElementById("senha").value = "";
+
+            } else {
+
+                document.getElementById("erro").innerText =
+                    "Senha incorreta! Tente novamente.";
+
+            }
+        }
+
+        function atualizarMerenda() {
+
+            let nome = document.getElementById("nomeMerenda").value.trim();
+            let foto = document.getElementById("fotoMerenda").value.trim();
+
+            if (nome === "") {
+                alert("Digite o nome da merenda!");
+                return;
+            }
+
+            document.getElementById("descricaoMerenda").innerText = nome;
+
+            if (foto !== "") {
+                document.getElementById("imagemMerenda").src = foto;
+            }
+
+            alert("Merenda atualizada com sucesso!");
+
+        }
+
+        function fecharPainel() {
+            document.getElementById("painel").style.display = "none";
+            document.getElementById("login").style.display = "none";
+        }
+
     </script>
-function abrirPainel() {
-    document.getElementById("painel").style.display = "block";
-}
-function atualizarMerenda() {
-    let nome = document.getElementById("nomeMerenda").value;
-    let foto = document.getElementById("fotoMerenda").value;
 
-    if (nome.trim() === "") {
-        alert("Digite o nome da merenda!");
-        return;
-    }
-
-    document.getElementById("descricaoMerenda").innerText =
-        nome;
-
-    if (foto.trim() !== "") {
-        document.getElementById("imagemMerenda").src = foto;
-    }
-
-    alert("Merenda atualizada com sucesso!");
-}
-
-    alert("Merenda atualizada: " + nome);
-}function abrirPainel() {
-    document.getElementById("login").style.display = "block";
-}
-
-function verificarSenha() {
-    let senha = document.getElementById("senha").value;
-
-    if (senha === "Merenda2026") {
-        document.getElementById("painel").style.display = "block";
-        document.getElementById("login").style.display = "none";
-    } else {
-        document.getElementById("erro").innerText =
-            "Senha incorreta!";
-    }
-}
 </body>
 </html>
