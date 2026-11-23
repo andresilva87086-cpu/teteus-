@@ -137,15 +137,24 @@
 function abrirPainel() {
     document.getElementById("painel").style.display = "block";
 }
-
 function atualizarMerenda() {
     let nome = document.getElementById("nomeMerenda").value;
     let foto = document.getElementById("fotoMerenda").value;
 
-    if (nome === "") {
+    if (nome.trim() === "") {
         alert("Digite o nome da merenda!");
         return;
     }
+
+    document.getElementById("descricaoMerenda").innerText =
+        nome;
+
+    if (foto.trim() !== "") {
+        document.getElementById("imagemMerenda").src = foto;
+    }
+
+    alert("Merenda atualizada com sucesso!");
+}
 
     alert("Merenda atualizada: " + nome);
 }function abrirPainel() {
